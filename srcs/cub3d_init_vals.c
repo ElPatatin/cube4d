@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_utils.c                                      :+:      :+:    :+:   */
+/*   cub3d_init_vals.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 12:18:00 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 16:31:19 by cpeset-c         ###   ########.fr       */
+/*   Created: 2023/04/24 15:16:15 by cpeset-c          #+#    #+#             */
+/*   Updated: 2023/04/24 15:33:12 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include "cub3d_data.h"
 #include "cub3d_errors.h"
 
-void	new_window(t_mlx *vals, t_data *data)
+void	init_vals(t_mlx *vals, t_data *data)
 {
-	mlx_put_image_to_window(vals->ptr, vals->win, data->img, 0, 0);
-}
-
-void	ft_mlx_put_pixels(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
-	*(t_unt *)dst = color;
+	vals->ptr = mlx_init();
+	if (!vals->ptr)
+		terminate_error(ERR_WIN, SYS_WIN);
+	vals->win = mlx_new_window(vals->ptr,
+			WINWIDTH, WINHEIGHT, TITLE);
+	data->img = mlx_new_image(vals->ptr, WINWIDTH, WINHEIGHT);
+	data->addr = mlx_get_data_addr(data->img, &data->bpp,
+			&data->line_len, &data->endian);
+	vals->data = data;
 }

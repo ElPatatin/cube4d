@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 16:33:05 by cpeset-c         ###   ########.fr       */
+/*   Created: 2023/04/24 15:43:37 by cpeset-c          #+#    #+#             */
+/*   Updated: 2023/04/24 16:02:00 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,21 @@
 #include "cub3d_hooks.h"
 #include "cub3d_errors.h"
 
-int	main(int ac, char **av)
+int	key_close_on_esc(int keycode, t_mlx *vals)
 {
-	UNUSED(av);
-	if (ac != 2)
-		return (print_error(ERR_ARGS, SYS_ARGS));
-	graphics();
-	return (EXIT_SUCCESS);
+	if (keycode == ESC_KEY)
+	{
+		mlx_destroy_window(vals->ptr, vals->win);
+		exit(EXIT_SUCCESS);
+	}
+	return (1);
 }
 
-void	graphics(void)
+int	key_print_hook(int keycode, t_mlx *vals)
 {
-	t_mlx	vals;
-	t_data	data;
-
-	init_vals(&vals, &data);
-	new_window(&vals, &data);
-	hooks(&vals);
-	mlx_loop(vals.ptr);
-}
-
-void	hooks(t_mlx *vals)
-{
-	mlx_key_hook(vals->win, key_close_on_esc, vals);
-	mlx_hook(vals->win, 2, 0, key_print_hook, vals);
-	mlx_hook(vals->win, 17, 0, mouse_close_onclick, vals);
+	UNUSED(vals);
+	if (keycode == ESC_KEY)
+		return (1);
+	printf("%d\n", keycode);
+	return (0);
 }

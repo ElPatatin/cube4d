@@ -27,6 +27,7 @@ UTL_DIR	:= utils/
 
 MAP_DIR	:= $(TUL_DIR)map_read/
 PRS_DIR	:= $(TUL_DIR)map_parser/
+HUK_DIR	:= $(TUL_DIR)cub_hooks/
 
 BIN_DIR	:= bin/
 
@@ -37,16 +38,25 @@ LIBS	= library/
 LIB_DIR	= $(LIBS)clift/
 LFT_DIR	= $(LIB_DIR)libft/
 OUT_DIR	= $(LIB_DIR)liboutput/
-MLX_DIR	= $(LIBS)minilibx/
+MLX_DIR	= minilibx/
 
 # -=-=-=-=-	CMND -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
+
+UNAME	= $(shell uname -s)
 
 CFLAGS		= -Wall -Wextra -Werror -W
 XFLAGS		= #-fsanitize=address -g
 LFLAGS		= #-fsanitize=leak
 DFLAGS		= -MT $@ -MMD -MP
-FRAMEWORK	= -framework OpenGL -framework AppKit
-LNX_MLX		= -ldl -lglfw3 -pthread -lm
+LNX_MLX		= -ldl -lglfw3 -lm
+
+ifeq ($(UNAME), Darwin)
+  GFLAGS = -framework OpenGL -framework Appkit -lm
+  MLX_DIR = ./$(LIBS)mlx_Darwin/
+else
+  GFLAGS = -lXext -lX11 -lm -lbsd
+  MLX_DIR = ./$(LIBS)mlx_Linux/
+endif
 
 AR		= ar -rcs
 RM		= rm -f
@@ -55,14 +65,23 @@ CP		= cp -f
 
 # -=-=-=-=-	FILE -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 
-LIBRARY	= $(LIB_DIR)libft.a $(LIB_DIR)liboutput.a
-MLX_LIB	= $(MLX_DIR)libmlx.a
+LIBRARY	= $(LIB_DIR)libft.a $(LIB_DIR)liboutput.a $(MLX_DIR)libmlx.a
+
 INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
 		-I$(LFT_DIR)$(INC_DIR) -I$(OUT_DIR)$(INC_DIR)
 
-CUB_SRC	= cub3d.c
+CUB_SRC	= cub3d.c \
+		cub3d_init_vals.c
+
+CUB_HUK	= key_hooks.c \
+		mouse_hooks.c
+
+CUB_UTL = cub3d_utils.c \
+		cub3d_errors.c
 
 SRCS	+= $(addprefix $(SRC_DIR), $(CUB_SRC))
+SRCS	+= $(addprefix $(HUK_DIR), $(CUB_HUK))
+SRCS	+= $(addprefix $(UTL_DIR), $(CUB_UTL))
 
 OBJS	= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 DEPS	= $(addprefix $(DEP_DIR), $(addsuffix .d, $(basename $(SRCS))))
@@ -89,7 +108,7 @@ run:
 
 $(NAME):: $(OBJS)
 	@$(MK) $(BIN_DIR)
-	@$(CC) $(CFLAGS) $(XFLAGS) $(FRAMEWORK) $(OBJS) $(LIBRARY) $(MLX_LIB) $(LFLAGS) -o $(BIN_DIR)$(NAME);
+	@$(CC) $(CFLAGS) $(XFLAGS) $(GFLAGS) $(OBJS) $(LIBRARY) $(MLX_LIB) -o $(BIN_DIR)$(NAME);
 	@printf "\n\t$(WHITE)Program \033[1;31mFDF $(WHITE)has been compiled!$(DEF_COLOR)\n"
 
 $(NAME)::

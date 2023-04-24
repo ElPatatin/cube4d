@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_utils.c                                      :+:      :+:    :+:   */
+/*   cub3d_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 12:18:00 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 16:31:19 by cpeset-c         ###   ########.fr       */
+/*   Created: 2023/04/24 15:03:49 by cpeset-c          #+#    #+#             */
+/*   Updated: 2023/04/24 15:12:40 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub3d_data.h"
 #include "cub3d_errors.h"
 
-void	new_window(t_mlx *vals, t_data *data)
+int	print_error(char *str, int syserr)
 {
-	mlx_put_image_to_window(vals->ptr, vals->win, data->img, 0, 0);
+	if (ft_printf_fd(STDERR_FILENO, "Error: %s", str) == ERRNUM)
+		terminate_error(ERR_PRNT, SYS_PRNT);
+	return (syserr);
 }
 
-void	ft_mlx_put_pixels(t_data *data, int x, int y, int color)
+void	terminate_error(char *str, int syserr)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
-	*(t_unt *)dst = color;
+	if (ft_printf_fd(STDERR_FILENO, "Error: %s", str) == ERRNUM)
+		exit(ERRNUM);
+	exit(syserr);
 }

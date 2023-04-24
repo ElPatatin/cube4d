@@ -1,28 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_utils.c                                      :+:      :+:    :+:   */
+/*   cub3d_data.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 12:18:00 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 16:31:19 by cpeset-c         ###   ########.fr       */
+/*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
+/*   Updated: 2023/04/24 15:30:49 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "cub3d_data.h"
-#include "cub3d_errors.h"
+#ifndef CUB3D_DATA_H
+# define CUB3D_DATA_H
 
-void	new_window(t_mlx *vals, t_data *data)
+# include <stddef.h>
+
+# define WINHEIGHT	(int)1080
+# define WINWIDTH	(int)1920
+# define TITLE		(char *)"cub3d gatito miau miau"
+
+typedef struct s_mlx	t_mlx;
+typedef struct s_data	t_data;
+
+struct s_data
 {
-	mlx_put_image_to_window(vals->ptr, vals->win, data->img, 0, 0);
-}
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+};
 
-void	ft_mlx_put_pixels(t_data *data, int x, int y, int color)
+struct s_mlx
 {
-	char	*dst;
+	void	*ptr;
+	void	*win;
+	t_data	*data;
+};
 
-	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
-	*(t_unt *)dst = color;
-}
+#endif

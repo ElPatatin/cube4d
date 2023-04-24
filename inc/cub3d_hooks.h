@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_hooks.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42barce>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:57:18 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 16:33:30 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:57:28 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_HOOKS_H
 # define CUB3D_HOOKS_H
+
+# include "cub3d_data.h"
 
 # ifdef __APPLE__
 
@@ -47,7 +49,7 @@
 #  define ARROW_KEY_UP			65362
 #  define ARROW_KEY_DOWN		65364
 #  define SPACE_BAR				32
-#  define KEY_ESC				65307
+#  define ESC_KEY				65307
 
 # endif
 

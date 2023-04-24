@@ -48,14 +48,18 @@ CFLAGS		= -Wall -Wextra -Werror -W
 XFLAGS		= #-fsanitize=address -g
 LFLAGS		= #-fsanitize=leak
 DFLAGS		= -MT $@ -MMD -MP
-LNX_MLX		= -ldl -lglfw3 -lm
 
 ifeq ($(UNAME), Darwin)
-  GFLAGS = -framework OpenGL -framework Appkit -lm
-  MLX_DIR = ./$(LIBS)mlx_Darwin/
+	GFLAGS	= -framework OpenGL -framework Appkit -lm
+	MLX_DIR	= ./$(LIBS)mlx_Darwin/
+	INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
+			-I$(LFT_DIR)$(INC_DIR) -I$(OUT_DIR)$(INC_DIR)
 else
-  GFLAGS = -lXext -lX11 -lm -lbsd
-  MLX_DIR = ./$(LIBS)mlx_Linux/
+	MLX_DIR	= ./$(LIBS)mlx_Linux/
+	GFLAGS	= -L$(MLX_DIR) -lmlx -lX11 -lm -lXext 
+	INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
+			-I$(LFT_DIR)$(INC_DIR) -I$(OUT_DIR)$(INC_DIR)\
+			-I/usr/include
 endif
 
 AR		= ar -rcs
@@ -66,9 +70,6 @@ CP		= cp -f
 # -=-=-=-=-	FILE -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 
 LIBRARY	= $(LIB_DIR)libft.a $(LIB_DIR)liboutput.a $(MLX_DIR)libmlx.a
-
-INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
-		-I$(LFT_DIR)$(INC_DIR) -I$(OUT_DIR)$(INC_DIR)
 
 CUB_SRC	= cub3d.c \
 		cub3d_init_vals.c
@@ -108,7 +109,7 @@ run:
 
 $(NAME):: $(OBJS)
 	@$(MK) $(BIN_DIR)
-	@$(CC) $(CFLAGS) $(XFLAGS) $(GFLAGS) $(OBJS) $(LIBRARY) $(MLX_LIB) -o $(BIN_DIR)$(NAME);
+	@$(CC) $(CFLAGS) $(XFLAGS) $(GFLAGS) $(OBJS) $(LIBRARY) -o $(BIN_DIR)$(NAME);
 	@printf "\n\t$(WHITE)Program \033[1;31mFDF $(WHITE)has been compiled!$(DEF_COLOR)\n"
 
 $(NAME)::

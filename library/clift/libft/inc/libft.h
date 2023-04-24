@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42barce>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:08:37 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/16 01:43:55 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:54:32 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,15 @@
 # include <sys/errno.h>
 # include <sys/wait.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE	(int)1
+# ifdef __APPLE__
+#  ifndef BUFFER_SIZE
+#   define BUFFER_SIZE	(int)1
+#  endif
+# elif __linux__
+#  define OPEN_MAX 		FOPEN_MAX
+#  ifndef BUFFER_SIZE
+#   define BUFFER_SIZE	(int)1
+#  endif
 # endif
 
 # define TRUE	(int)1

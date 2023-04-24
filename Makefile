@@ -52,14 +52,10 @@ DFLAGS		= -MT $@ -MMD -MP
 ifeq ($(UNAME), Darwin)
 	GFLAGS	= -framework OpenGL -framework Appkit -lm
 	MLX_DIR	= ./$(LIBS)mlx_Darwin/
-	INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
-			-I$(LFT_DIR)$(INC_DIR) -I$(OUT_DIR)$(INC_DIR)
-else
+	INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR)
+else ifeq ($(UNAME), Linux)
 	MLX_DIR	= ./$(LIBS)mlx_Linux/
 	GFLAGS	= -L$(MLX_DIR) -lmlx -lX11 -lm -lXext 
-	INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
-			-I$(LFT_DIR)$(INC_DIR) -I$(OUT_DIR)$(INC_DIR)\
-			-I/usr/include
 endif
 
 AR		= ar -rcs
@@ -70,6 +66,9 @@ CP		= cp -f
 # -=-=-=-=-	FILE -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 
 LIBRARY	= $(LIB_DIR)libft.a $(LIB_DIR)liboutput.a $(MLX_DIR)libmlx.a
+
+INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
+			-I$(LFT_DIR)$(INC_DIR) -I$(OUT_DIR)$(INC_DIR)
 
 CUB_SRC	= cub3d.c \
 		cub3d_init_vals.c
@@ -90,12 +89,6 @@ DEPS	= $(addprefix $(DEP_DIR), $(addsuffix .d, $(basename $(SRCS))))
 
 # -=-=-=-=-	RULE -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 
-$(OBJ_DIR)%.o: %.c $(MKFL)
-	@$(MK) $(dir $@) $(dir $(subst $(OBJ_DIR), $(DEP_DIR), $@))
-	@printf "\r$(GREEN)\tCompiling: $(YELLOW)$< $(DEF_CLR)                   \r"
-	@$(CC) $(CFLAGS) $(DFLAGS) $(INCLUDE) -c $< -o $@
-	@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_DIR), $(DEP_DIR), $@))
-
 all:
 	@$(MAKE) -sC $(MLX_DIR)
 	@$(MAKE) -C $(LIB_DIR)
@@ -109,11 +102,11 @@ run:
 
 $(NAME):: $(OBJS)
 	@$(MK) $(BIN_DIR)
-	@$(CC) $(CFLAGS) $(XFLAGS) $(GFLAGS) $(OBJS) $(LIBRARY) -o $(BIN_DIR)$(NAME);
-	@printf "\n\t$(WHITE)Program \033[1;31mFDF $(WHITE)has been compiled!$(DEF_COLOR)\n"
+	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(BIN_DIR)$(NAME)
+	@printf "\n\t$(WHITE)Program \033[1;31mCub3D $(WHITE)has been compiled!$(DEF_COLOR)\n"
 
 $(NAME)::
-	@printf "\t$(WHITE)Nothing more to be done for program \033[1;31mFDF$(DEF_COLOR)\n"
+	@printf "\t$(WHITE)Nothing more to be done for program \033[1;31mCub3D$(DEF_COLOR)\n"
 
 -include $(DEPS)
 
@@ -121,7 +114,7 @@ clean:
 	@$(MAKE) clean -C $(LIB_DIR)
 	@$(MAKE) clean -C $(MLX_DIR)
 	@$(RM) -r $(OBJ_DIR) $(DEP_DIR)
-	@echo "$(BLUE)	FDF object and dependencies files cleaned.$(DEF_COLOR)"
+	@echo "$(BLUE)	Cub3D object and dependencies files cleaned.$(DEF_COLOR)"
 
 fclean: 
 	@$(MAKE) clean -C $(MLX_DIR)
@@ -135,7 +128,10 @@ re:
 	@$(MAKE) all
 	@echo "$(GREEN)	Cleaned and rebuilt everything for fdf project.$(DEF_COLOR)"
 
-norm:
-	@norminette $(INC_DIR) $(SRC_DIR) $(TUL_DIR) $(UTL_DIR) $(LIB_DIR)
+$(OBJ_DIR)%.o: %.c $(MKFL)
+	@$(MK) $(dir $@) $(dir $(subst $(OBJ_DIR), $(DEP_DIR), $@))
+	@printf "\r$(GREEN)\tCompiling: $(YELLOW)$< $(DEF_CLR)                   \r"
+	@$(CC) $(CFLAGS) $(DFLAGS) $(INCLUDE) -c $< -o $@
+	@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_DIR), $(DEP_DIR), $@))
 
 .PHONY: all clean fclean re norm

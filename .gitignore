@@ -57,3 +57,5 @@ cub3D
 ._.DS_Store
 bin/
 .vscode
+*.gen
+*test

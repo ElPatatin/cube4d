@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42barce>        +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 19:50:25 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:00:32 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 # ifdef __APPLE__
 #  define OS			(char *)"Apple"
-#  include "../library/mlx_Darwin/mlx.h"
+#  include "mlx.h"
 # elif __linux__
 #  define OS			(char *)"Linux"
-#  include "../library/mlx_Linux/mlx.h"
+#  include "mlx.h"
 # endif
 
 # include <math.h>

@@ -1,0 +1,14 @@
+NO ./../resources/north.xpm
+SO ./../resources/south.xpm
+WE ./../resources/west.xpm
+EA ./../resources/east.xpm
+S ./../resources/sprite.xpm
+
+F 255,255,255
+C 100,100,100
+
+1111111111
+1000000001
+1010000001
+1000000001
+1111111111

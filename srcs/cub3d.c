@@ -6,20 +6,21 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 16:33:05 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 17:54:41 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "cub3d_map.h"
 #include "cub3d_data.h"
 #include "cub3d_hooks.h"
 #include "cub3d_errors.h"
 
 int	main(int ac, char **av)
 {
-	UNUSED(av);
 	if (ac != 2)
 		return (print_error(ERR_ARGS, SYS_ARGS));
+	open_map(av[1]);
 	graphics();
 	return (EXIT_SUCCESS);
 }

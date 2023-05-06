@@ -29,8 +29,6 @@ MAP_DIR	:= $(TUL_DIR)map_read/
 PRS_DIR	:= $(TUL_DIR)map_parser/
 HUK_DIR	:= $(TUL_DIR)cub_hooks/
 
-BIN_DIR	:= bin/
-
 OBJ_DIR	:= .objs/
 DEP_DIR	:= .deps/
 
@@ -53,9 +51,11 @@ ifeq ($(UNAME), Darwin)
 	GFLAGS	= -framework OpenGL -framework Appkit -lm
 	MLX_DIR	= ./$(LIBS)mlx_Darwin/
 	INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR)
+	CC		= clang
 else ifeq ($(UNAME), Linux)
-	MLX_DIR	= ./$(LIBS)mlx_Linux/
 	GFLAGS	= -L$(MLX_DIR) -lmlx -lX11 -lm -lXext 
+	MLX_DIR	= ./$(LIBS)mlx_Linux/
+	CC		= gcc
 endif
 
 AR		= ar -rcs
@@ -73,6 +73,10 @@ INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
 CUB_SRC	= cub3d.c \
 		cub3d_init_vals.c
 
+CUB_MAP	= cub_map.c
+
+CUB_PRS	= cub_parser.c
+
 CUB_HUK	= key_hooks.c \
 		mouse_hooks.c
 
@@ -80,6 +84,8 @@ CUB_UTL = cub3d_utils.c \
 		cub3d_errors.c
 
 SRCS	+= $(addprefix $(SRC_DIR), $(CUB_SRC))
+SRCS	+= $(addprefix $(MAP_DIR), $(CUB_MAP))
+SRCS	+= $(addprefix $(PRS_DIR), $(CUB_PRS))
 SRCS	+= $(addprefix $(HUK_DIR), $(CUB_HUK))
 SRCS	+= $(addprefix $(UTL_DIR), $(CUB_UTL))
 
@@ -89,26 +95,18 @@ DEPS	= $(addprefix $(DEP_DIR), $(addsuffix .d, $(basename $(SRCS))))
 
 # -=-=-=-=-	RULE -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
 
-all:
+all: makelib $(NAME)
+	
+makelib:
 	@$(MAKE) -sC $(MLX_DIR)
 	@$(MAKE) -C $(LIB_DIR)
-	@$(MAKE) $(NAME)
-
-run:
-	@$(MAKE) -sC $(MLX_DIR)
-	@$(MAKE) -C $(LIB_DIR)
-	@$(MAKE) $(NAME)
-	@./$(NAME) tests/cpeset-c.cub
 
 $(NAME):: $(OBJS)
-	@$(MK) $(BIN_DIR)
-	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(BIN_DIR)$(NAME)
+	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(NAME)
 	@printf "\n\t$(WHITE)Program \033[1;31mCub3D $(WHITE)has been compiled!$(DEF_COLOR)\n"
 
 $(NAME)::
 	@printf "\t$(WHITE)Nothing more to be done for program \033[1;31mCub3D$(DEF_COLOR)\n"
-
--include $(DEPS)
 
 clean:
 	@$(MAKE) clean -C $(LIB_DIR)
@@ -126,12 +124,14 @@ fclean:
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
-	@echo "$(GREEN)	Cleaned and rebuilt everything for fdf project.$(DEF_COLOR)"
+	@echo "$(GREEN)	Cleaned and rebuilt everything for Cub3D project.$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: %.c $(MKFL)
 	@$(MK) $(dir $@) $(dir $(subst $(OBJ_DIR), $(DEP_DIR), $@))
 	@printf "\r$(GREEN)\tCompiling: $(YELLOW)$< $(DEF_CLR)                   \r"
 	@$(CC) $(CFLAGS) $(DFLAGS) $(INCLUDE) -c $< -o $@
 	@mv $(patsubst %.o, %.d, $@) $(dir $(subst $(OBJ_DIR), $(DEP_DIR), $@))
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re norm

@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:23:46 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 20:38:40 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:57:11 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,14 @@
 # define P_EA	(char)'E'
 
 # define VOID	(char)'v'
+
+// Parser Functions
+void	parse_map(int fd);
+void	parse_color(char *line, t_map *map, char letter);
+void	parse_texture_path(t_map *map, char *line, char *path);
+
+// Parser Utils Functions
+t_bool	check_valid_path(char *path);
+void	check_valid_number(int *nbr, char *line);
 
 #endif

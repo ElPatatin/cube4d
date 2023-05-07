@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_map.c                                          :+:      :+:    :+:   */
+/*   cub_parser_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 12:19:07 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/07 13:48:04 by cpeset-c         ###   ########.fr       */
+/*   Created: 2023/05/07 18:31:03 by cpeset-c          #+#    #+#             */
+/*   Updated: 2023/05/07 19:27:12 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,34 @@
 #include "cub3d_parser.h"
 #include "cub3d_errors.h"
 
-static int	check_map_extension(char *cw_map);
-
-void	open_map(char *cw_map)
+t_bool	check_valid_path(char *path)
 {
 	int	fd;
 
-	if (check_map_extension(cw_map))
-		terminate_error(ERR_EXT_MAP, SYS_EXT_MAP);
-	fd = open(cw_map, O_RDONLY);
+	fd = open(path, O_RDONLY);
 	if (fd < 0 || fd > OPEN_MAX)
-		terminate_error(ERR_OPEN_MAP, SYS_OPEN_MAP);
-	parse_map(fd);
-	if (close(fd))
-		terminate_error(ERR_CLOSE_MAP, SYS_CLOSE_MAP);
-}
-
-static int	check_map_extension(char *cw_map)
-{
-	size_t	len;
-	char	*str;
-
-	len = ft_strlen(cw_map);
-	str = ft_strrchr(cw_map, '/');
-	if (len <= 4 || ft_strlen(&str[1]) <= 4)
-		return (TRUE);
-	if (ft_strncmp(MAP_EXT, &cw_map[len - 4], ft_strlen(MAP_EXT)))
 		return (TRUE);
 	return (FALSE);
+}
+
+void	check_valid_number(int *nbr, char *line)
+{
+	size_t	len;
+	char	*val;
+
+	len = 0;
+	while (ft_isdigit(line[len]))
+		len++;
+	*nbr = ft_atoi(line);
+	val = ft_itoa(*nbr);
+	if (!val)
+		terminate_error(ERR_MEM, SYS_MEM);
+	if (ft_strncmp(val, line, len))
+	{
+		ft_delete(val);
+		terminate_error(ERR_BAD_CLR, SYS_BAD_CLR);
+	}
+	ft_delete(val);
+	if (*nbr > 255 || *nbr < 0)
+		terminate_error(ERR_BAD_CLR, SYS_BAD_CLR);
 }

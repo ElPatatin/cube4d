@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_hooks.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42barce>        +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:57:18 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 18:57:28 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 19:10:28 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,24 @@
 
 # elif __linux__
 
-#  define OS 					(char *)"Linux"
-#  define LETTER_KEY_LEFT		97
-#  define LETTER_KEY_RIGHT		100
-#  define LETTER_KEY_UP       	119
-#  define LETTER_KEY_DOWN		115
-#  define LETTER_KEY_ACTION		101
-#  define ARROW_KEY_LEFT	 	65361
-#  define ARROW_KEY_RIGHT		65363
-#  define ARROW_KEY_UP			65362
-#  define ARROW_KEY_DOWN		65364
-#  define SPACE_BAR				32
-#  define ESC_KEY				65307
+#  define ESC_KEY			(int)65307
+
+#  define A_KEY				(int)97
+#  define D_KEY				(int)100
+#  define W_KEY       		(int)119
+#  define S_KEY				(int)115
+
+#  define LFT_KEY			(int)65361
+#  define RGT_KEY			(int)65363
+#  define UP_KEY			(int)65362
+#  define DWN_KEY			(int)65364
+
+// #  define ZOOM_IN_KEY	(int)4
+// #  define ZOOM_OUT_KEY	(int)5
+
+#  define SPC_KEY			(int)32
+// #  define ENT_KEY		(int)
+// #  define QUE_KEY		(int)
 
 # endif
 

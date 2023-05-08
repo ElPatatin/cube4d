@@ -22,6 +22,7 @@
 # include <sys/uio.h>
 # include <sys/errno.h>
 # include <sys/wait.h>
+# include <stdint.h>
 
 # ifdef __APPLE__
 #  ifndef BUFFER_SIZE

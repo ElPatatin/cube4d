@@ -55,6 +55,6 @@ static int	get_line(char **line, int fd)
 {
 	*line = get_next_line(fd);
 	if (!*line)
-		return ((int)ft_delete(*line));
+		return ((intptr_t)ft_delete(*line));
 	return (TRUE);
 }

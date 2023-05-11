@@ -39,6 +39,8 @@ static int	check_map_extension(char *cw_map)
 
 	len = ft_strlen(cw_map);
 	str = ft_strrchr(cw_map, '/');
+	if (!str)
+		str = cw_map;
 	if (len <= 4 || ft_strlen(&str[1]) <= 4)
 		return (TRUE);
 	if (ft_strncmp(MAP_EXT, &cw_map[len - 4], ft_strlen(MAP_EXT)))

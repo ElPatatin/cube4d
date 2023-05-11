@@ -17,12 +17,14 @@ char
 {
 	int	len;
 
+	if (!s)
+		return (NULL);
 	len = ft_strlen(s);
 	while (*(s + len) != (char) c)
 	{
 		--len;
 		if (len == -1)
-			return (0);
+			return (NULL);
 	}
 	return ((char *)(s + len));
 }

@@ -54,8 +54,7 @@ MLX_DIR	= minilibx/
 UNAME	= $(shell uname -s)
 
 CFLAGS		= -Wall -Wextra -Werror -W
-XFLAGS		= #-fsanitize=address -g
-LFLAGS		= #-fsanitize=leak
+XFLAGS		= -fsanitize=address -g
 DFLAGS		= -MT $@ -MMD -MP
 
 ifeq ($(UNAME), Darwin)

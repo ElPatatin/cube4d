@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 18:00:32 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/14 18:47:57 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	hooks(t_mlx *vals);
 //
 // Init Window
 void	init_vals(t_mlx *vals, t_data *data);
+void	init_player(t_game *game, char map[5][6]); //TODO: remove map (should be inside game)
 
 // Util Function
 void	new_window(t_mlx *vals, t_data *data);

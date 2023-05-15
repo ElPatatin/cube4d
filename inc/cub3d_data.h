@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_data.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 17:52:14 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/14 18:56:38 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,35 @@
 typedef struct s_mlx	t_mlx;
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
+typedef struct s_player	t_player;
+typedef struct s_ray	t_ray;
+typedef struct s_game	t_game;
+
+struct s_player {
+	float	x;
+	float	y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+};
+
+struct s_ray
+{
+	int		dir_x;
+	int		dir_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	int		step_x;
+	int		step_y;
+	int		map_x;
+	int		map_y;
+	float	distance;
+	int		hit;
+	int		side;
+};
 
 struct s_map {
 	int		width;
@@ -52,5 +81,12 @@ struct s_mlx
 	t_data	*data;
 	t_map	*map;
 };
+
+struct s_game
+{
+	t_map		map;
+	t_player	player;
+};
+
 
 #endif

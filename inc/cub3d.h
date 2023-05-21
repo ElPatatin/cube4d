@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 18:00:32 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/21 21:23:47 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	init_vals(t_mlx *vals, t_data *data);
 // Util Function
 void	new_window(t_mlx *vals, t_data *data);
 void	ft_mlx_put_pixels(t_data *data, int x, int y, int color);
+t_bool	ft_ismap(int c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:19:07 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/07 13:48:04 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/21 19:51:02 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	open_map(char *cw_map)
 	fd = open(cw_map, O_RDONLY);
 	if (fd < 0 || fd > OPEN_MAX)
 		terminate_error(ERR_OPEN_MAP, SYS_OPEN_MAP);
-	parse_map(fd);
+	do_parse_map(fd);
 	if (close(fd))
 		terminate_error(ERR_CLOSE_MAP, SYS_CLOSE_MAP);
 }

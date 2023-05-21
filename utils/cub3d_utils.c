@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:18:00 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 16:31:19 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/21 21:23:23 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,14 @@ void	ft_mlx_put_pixels(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	*(t_unt *)dst = color;
+}
+
+t_bool	ft_ismap(int c)
+{
+	if (c == '1' || c == '0'
+		|| c == 'S' || c == 'N' || c == 'W'
+		|| c == 'E' || c == 'D' || c == 'C'
+		|| ft_isspace(c))
+		return (TRUE);
+	return (FALSE);
 }

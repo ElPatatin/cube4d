@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:03:58 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/07 19:14:43 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/21 19:58:55 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define ERR_EXT_MAP	(char *)"\aMap extension is invalid!\n"
 # define ERR_BAD_RES	(char *)"\aMap resources are invalid!\n"
 # define ERR_BAD_CLR	(char *)"\aMap colours are invalid!\n"
+# define ERR_MAP		(char *)"\aMap is duplicated!\n"
 
 // Error Codes
 # define SYS_ARGS		(int)1
@@ -37,6 +38,7 @@
 # define SYS_EXT_MAP	(int)8
 # define SYS_BAD_RES	(int)9
 # define SYS_BAD_CLR	(int)10
+# define SYS_MAP		(int)11
 
 int		print_error(char *str, int syserr);
 void	terminate_error(char *str, int syserr);

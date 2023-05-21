@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 17:52:14 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/21 21:06:31 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ typedef struct s_data	t_data;
 typedef struct s_map	t_map;
 
 struct s_map {
-	int		width;
-	int		height;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -34,6 +32,7 @@ struct s_map {
 	int		f_color;
 	int		c_color;
 	char	**grid;
+	t_bool	grid_full;
 };
 
 struct s_data

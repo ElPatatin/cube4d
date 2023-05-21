@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42barce>        +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:08:37 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/04/24 18:54:32 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/21 19:51:37 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int		*ft_range(int min, int max);
 int		*ft_rrange(int start, int end);
 int		ft_ultrange(int **range, int min, int max);
 char	*ft_memjoin(char *s1, char *s2);
+void	*ft_realloc(void *ptr, size_t count, size_t size);
 
 // FT_put functions. These functions prints either in standart output or in fd
 int		ft_putchar(int c);

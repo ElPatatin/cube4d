@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_map.h                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 17:45:34 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 20:19:14 by cpeset-c         ###   ########.fr       */
+/*   Created: 2023/05/21 19:06:24 by cpeset-c          #+#    #+#             */
+/*   Updated: 2023/05/21 19:08:47 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_MAP_H
-# define CUB3D_MAP_H
+#include "libft.h"
 
-# include "cub3d_data.h"
+void
+	*ft_realloc(void *ptr, size_t count, size_t size)
+{
+	void	*new_ptr;
 
-# define MAP_EXT	(char *)".cub"
-
-// Map Functions
-void	open_map(char *cw_map);
-
-// Read Map Functions
-void	read_map(int fd, t_map *map);
-int		get_line(char **line, int fd);
-
-// Read Map Utils Function
-t_bool	while_isspace(char *str);
-t_bool	while_isdigit(char *str);
-
-#endif
+	if (!ptr)
+		return (ft_calloc(count, size));
+	if (!size)
+		ft_delete(ptr);
+	new_ptr = ft_calloc(count, size);
+	if (!new_ptr)
+		return (NULL);
+	ft_memcpy(new_ptr, ptr, size);
+	ft_delete(ptr);
+	return (new_ptr);
+}

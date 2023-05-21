@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/14 18:47:57 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 10:59:18 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,24 @@
 # include "cub3d_data.h"
 
 // Graphics Function
-void	graphics(void);
+void	graphics(t_game *game);
 
-// Hooks Functin
+// Game Loop
+void	game_loop(t_mlx *vals, t_game *game);
+
+// Hooks Function
 void	hooks(t_mlx *vals);
 
 // Init Functions
-//
+void	init_map(t_game *game, char map[MAPHEIGHT][MAPWIDTH]); //TODO: pass non-hardcoded map
+void	init_player(t_game *game);
+
 // Init Window
 void	init_vals(t_mlx *vals, t_data *data);
-void	init_player(t_game *game, char map[5][6]); //TODO: remove map (should be inside game)
 
 // Util Function
 void	new_window(t_mlx *vals, t_data *data);
 void	ft_mlx_put_pixels(t_data *data, int x, int y, int color);
+void	exit_game(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/14 18:56:38 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 10:58:59 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@
 # define WINWIDTH	(int)1920
 # define TITLE		(char *)"cub3d gatito miau miau"
 
+# define MAPHEIGHT	12
+# define MAPWIDTH	24
+
 typedef struct s_mlx	t_mlx;
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_ray	t_ray;
+typedef struct s_wall	t_wall;
 typedef struct s_game	t_game;
 
 struct s_player {
@@ -37,8 +41,8 @@ struct s_player {
 
 struct s_ray
 {
-	int		dir_x;
-	int		dir_y;
+	float	dir_x;
+	float	dir_y;
 	float	delta_dist_x;
 	float	delta_dist_y;
 	float	side_dist_x;
@@ -50,6 +54,14 @@ struct s_ray
 	float	distance;
 	int		hit;
 	int		side;
+};
+
+struct s_wall
+{
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		color;
 };
 
 struct s_map {
@@ -86,7 +98,10 @@ struct s_game
 {
 	t_map		map;
 	t_player	player;
+	t_ray		ray;
+	t_wall		wall;
+	double		time;
+	double		old_time;
 };
-
 
 #endif

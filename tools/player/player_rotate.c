@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:32:34 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/05/21 12:31:10 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 12:42:26 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "cub3d_errors.h"
 #include "cub3d_player.h"
 
-# define ROT_SPEED	0.05
+# define ROT_SPEED	0.25
 
 void	rotate_left(t_game *game)
 {

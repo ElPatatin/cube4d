@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 11:22:19 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:49:53 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ struct s_player {
 	float	dir_y;
 	float	plane_x;
 	float	plane_y;
+	int		move_up;
+	int		move_down;
+	int		move_left;
+	int		move_right;
+	int		rotate_left;
+	int		rotate_right;
 };
 
 struct s_ray
@@ -91,7 +97,6 @@ struct s_mlx
 	void	*ptr;
 	void	*win;
 	t_data	*data;
-	// t_map	*map;
 };
 
 struct s_game

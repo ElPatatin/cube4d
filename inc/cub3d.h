@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 12:20:27 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:50:16 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int		game_loop(t_game *game);
 void	hooks(t_game *game);
 
 // Init Functions
-void	init_map(t_game *game, char map[MAPHEIGHT][MAPWIDTH]); //TODO: pass non-hardcoded map
+// TODO: Pass non-hardcoded map
+void	init_map(t_game *game, char map[MAPHEIGHT][MAPWIDTH]);
 void	init_player(t_game *game);
 
 // Init Window

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:33:35 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/05/21 12:29:24 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:40:27 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 
 # include "cub3d_data.h"
 
+# define ROT_SPEED	0.02
+# define MOVE_SPEED	0.05
+
 // Player movement
-void	move_forward(t_game *game);
-void	move_backward(t_game *game);
-void	move_left(t_game *game);
-void	move_right(t_game *game);
+void	handle_player_movement(t_game *game);
 
 // Player rotation
-void	rotate_left(t_game *game);
-void	rotate_right(t_game *game);
+void	handle_player_rotation(t_game *game);
 
 #endif

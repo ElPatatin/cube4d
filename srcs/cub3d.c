@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 18:43:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:58:09 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	graphics(t_game *game)
 
 int	game_loop(t_game *game)
 {
+	mlx_destroy_image((&game->mlx)->ptr, (&game->mlx)->data->img);
 	game->mlx.data->img = mlx_new_image((&game->mlx)->ptr, WINWIDTH, WINHEIGHT);
 	game->mlx.data->addr = mlx_get_data_addr(
 			game->mlx.data->img, &game->mlx.data->bpp,
@@ -71,7 +72,6 @@ int	game_loop(t_game *game)
 	render_game(game);
 	mlx_put_image_to_window((&game->mlx)->ptr, (&game->mlx)->win,
 		(&game->mlx)->data->img, 0, 0);
-	mlx_destroy_image((&game->mlx)->ptr, (&game->mlx)->data->img);
 	return (0);
 }
 

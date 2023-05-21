@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_hooks.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:57:18 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 19:10:28 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/05/21 12:03:38 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@
 # endif
 
 // Key Hooks
-int	key_close_on_esc(int keycode, t_mlx *vals);
+//int	key_move(int keycode, t_game *game);
+int	handle_keys(int keycode, t_game *game);
 int	key_print_hook(int keycode, t_mlx *vals);
 
 // Mouse Hooks

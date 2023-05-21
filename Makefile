@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/05/21 10:42:31 by ogonzale         ###   ########.fr        #
+#    Updated: 2023/05/21 11:33:18 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ MAP_DIR	:= $(TUL_DIR)map_read/
 PRS_DIR	:= $(TUL_DIR)map_parser/
 HUK_DIR	:= $(TUL_DIR)cub_hooks/
 RAY_DIR := $(TUL_DIR)ray/
+PLA_DIR := $(TUL_DIR)player/
 
 OBJ_DIR	:= .objs/
 DEP_DIR	:= .deps/
@@ -97,6 +98,9 @@ CUB_HUK	= key_hooks.c \
 CUB_RAY = ray_calc.c \
 		ray_dda.c
 
+CUB_PLA = player_move.c \
+		player_rotate.c
+
 CUB_UTL = cub3d_utils.c \
 		cub3d_errors.c \
 		cub3d_exit.c
@@ -106,6 +110,7 @@ SRCS	+= $(addprefix $(MAP_DIR), $(CUB_MAP))
 SRCS	+= $(addprefix $(PRS_DIR), $(CUB_PRS))
 SRCS	+= $(addprefix $(HUK_DIR), $(CUB_HUK))
 SRCS	+= $(addprefix $(RAY_DIR), $(CUB_RAY))
+SRCS	+= $(addprefix $(PLA_DIR), $(CUB_PLA))
 SRCS	+= $(addprefix $(UTL_DIR), $(CUB_UTL))
 
 OBJS	= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))

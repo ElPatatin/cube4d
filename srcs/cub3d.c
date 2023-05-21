@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 10:45:49 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 12:40:26 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	simple_map[MAPHEIGHT][MAPWIDTH] =
 	{'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
 	{'1', '1', '0', '0', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
 	{'1', '1', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
-	{'1', '1', '0', 'N', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
+	{'1', '1', '0', 'E', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
 	{'1', '1', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
 	{'1', '1', '0', '0', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
 	{'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
@@ -50,37 +50,41 @@ int	main(int ac, char **av)
 
 void	graphics(t_game *game)
 {
-	t_mlx	vals;
 	t_data	data;
 
-	init_vals(&vals, &data);
-	new_window(&vals, &data);
-	hooks(&vals);
-	game_loop(&vals, game);
+	init_vals(&game->mlx, &data);
+	new_window(&game->mlx, &data);
+	hooks(game);
+	game_loop(game);
+	mlx_loop((&game->mlx)->ptr);
 }
 
-void	game_loop(t_mlx *vals, t_game *game)
+int	game_loop(t_game *game)
 {
 	int		x;
 
-	while (42)
+	game->mlx.data->img = mlx_new_image((&game->mlx)->ptr, WINWIDTH, WINHEIGHT);
+	game->mlx.data->addr = mlx_get_data_addr(game->mlx.data->img, &game->mlx.data->bpp,
+			&game->mlx.data->line_len, &game->mlx.data->endian); 
+	x = -1;
+	while (++x < WINWIDTH)
 	{
-		x = -1;
-		while (++x < WINWIDTH)
-		{
-			calc_ray_pos_dir(game, x);
-			calc_ray_delta_dist(game);
-			calc_ray_step_and_side_dist(game);
-			perform_dda(game, vals, x);
-		}
-		mlx_put_image_to_window(vals->ptr, vals->win, vals->data->img, 0, 0);
-		mlx_loop(vals->ptr);
+		calc_ray_pos_dir(game, x);
+		calc_ray_delta_dist(game);
+		calc_ray_step_and_side_dist(game);
+		perform_dda(game, &game->mlx, x);
 	}
+	mlx_put_image_to_window((&game->mlx)->ptr, (&game->mlx)->win, (&game->mlx)->data->img, 0, 0);
+	mlx_destroy_image((&game->mlx)->ptr, (&game->mlx)->data->img);
+	return (0);
 }
 
-void	hooks(t_mlx *vals)
+void	hooks(t_game *game)
 {
-	mlx_key_hook(vals->win, key_close_on_esc, vals);
-	mlx_hook(vals->win, 2, 0, key_print_hook, vals);
-	mlx_hook(vals->win, 17, 0, mouse_close_onclick, vals);
+	//mlx_key_hook((&game->mlx)->win, key_move, game);
+	mlx_do_key_autorepeaton((&game->mlx)->ptr);
+	mlx_loop_hook((&game->mlx)->ptr, game_loop, game);
+	mlx_key_hook((&game->mlx)->win, handle_keys, game);
+	mlx_hook((&game->mlx)->win, 2, 0, key_print_hook, &game->mlx);
+	mlx_hook((&game->mlx)->win, 17, 0, mouse_close_onclick, &game->mlx);
 }

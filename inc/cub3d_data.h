@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 10:58:59 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/05/21 11:22:19 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ struct s_mlx
 	void	*ptr;
 	void	*win;
 	t_data	*data;
-	t_map	*map;
+	// t_map	*map;
 };
 
 struct s_game
@@ -100,6 +100,7 @@ struct s_game
 	t_player	player;
 	t_ray		ray;
 	t_wall		wall;
+	t_mlx		mlx;
 	double		time;
 	double		old_time;
 };

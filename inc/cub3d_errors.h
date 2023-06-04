@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:03:58 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 19:58:55 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:17:56 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@
 # define ERR_READ_MAP	(char *)"\aMap could not be read!\n"
 # define ERR_CLOSE_MAP	(char *)"\aMap could not be closed!\n"
 # define ERR_EXT_MAP	(char *)"\aMap extension is invalid!\n"
-# define ERR_BAD_RES	(char *)"\aMap resources are invalid!\n"
-# define ERR_BAD_CLR	(char *)"\aMap colours are invalid!\n"
-# define ERR_MAP		(char *)"\aMap is duplicated!\n"
+# define ERR_DUP_MAP	(char *)"\aMap is duplicated!\n"
+# define ERR_BAD_MAP	(char *)"\aMap is invalid!\n"
+# define ERR_DUP_TEX	(char *)"\aMap texture is duplicated!\n"
+# define ERR_BAD_TEX	(char *)"\aMap texture is invalid!\n"
+# define ERR_TEX		(char *)"\aA map texture was found missing!\n"
+# define ERR_DUP_CLR	(char *)"\aMap colour is duplicated!\n"
+# define ERR_BAD_CLR	(char *)"\aMap colour is invalid!\n"
+# define ERR_CLR		(char *)"\aA map colour was found missing!\n"
 
 // Error Codes
 # define SYS_ARGS		(int)1
@@ -36,9 +41,14 @@
 # define SYS_READ_MAP	(int)6
 # define SYS_CLOSE_MAP	(int)7
 # define SYS_EXT_MAP	(int)8
-# define SYS_BAD_RES	(int)9
-# define SYS_BAD_CLR	(int)10
-# define SYS_MAP		(int)11
+# define SYS_DUP_MAP	(int)9
+# define SYS_BAD_MAP	(int)10
+# define SYS_DUP_TEX	(int)11
+# define SYS_BAD_TEX	(int)12
+# define SYS_TEX		(int)13
+# define SYS_DUP_CLR	(int)14
+# define SYS_BAD_CLR	(int)15
+# define SYS_CLR		(int)16
 
 int		print_error(char *str, int syserr);
 void	terminate_error(char *str, int syserr);

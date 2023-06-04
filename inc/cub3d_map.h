@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:45:34 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 20:19:14 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:43:08 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ int		get_line(char **line, int fd);
 // Read Map Utils Function
 t_bool	while_isspace(char *str);
 t_bool	while_isdigit(char *str);
+int		get_line(char **line, int fd);
+void	get_map_length(int fd, int *map_len);
+
 
 #endif

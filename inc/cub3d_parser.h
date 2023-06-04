@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:23:46 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 21:18:26 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:56:43 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@
 # define VOID	(char)'V'
 
 // Parser Functions
-void	do_parse_map(int fd);
-void	parse_color(char *line, t_map *map, char letter);
-void	parse_texture_path(t_map *map, char *line, char *path);
-void	parse_map(char *line, t_map *map, int fd);
+void	get_map(int fd, size_t map_len);
 
 // Parser Utils Functions
 t_bool	check_valid_path(char *path);
@@ -47,5 +44,22 @@ void	check_valid_number(int *nbr, char *line);
 char	**ft_grid_realloc(char **grid, ssize_t count, ssize_t size);
 void	ft_gridcpy(char **grid, char **cpygrid, char *first);
 t_bool	ft_gridcheck(char *line);
+
+// Parser Texture Functions
+void	load_north_texture(t_map *map);
+void	load_south_texture(t_map *map);
+void	load_west_texture(t_map *map);
+void	load_east_texture(t_map *map);
+void	load_sprite_texture(t_map *map);
+
+// Parser Textures Utils Functions
+void	parse_texture(char **line, char **texture, char *type);
+t_bool	check_file(char *path);
+t_bool	validate_textures(t_map *map);
+
+// Parser Colours Functions
+void	load_floor_colour(t_map *map);
+void	load_cealing_colour(t_map *map);
+void	parse_colour(char *line, int *colour, char letter);
 
 #endif

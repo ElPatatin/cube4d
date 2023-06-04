@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:19:05 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 21:30:14 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:01:23 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,87 +16,40 @@
 #include "cub3d_parser.h"
 #include "cub3d_errors.h"
 
-void	do_parse_map(int fd)
+static void	load_textures(t_map *map);
+static void	load_colours(t_map *map);
+
+void	get_map(int fd, size_t map_len)
 {
 	t_map	map;
 
-	map.grid_full = FALSE;
+	init_map(&map);
+	map.length = map_len;
 	read_map(fd, &map);
-	// Here do check of map if all set up correctly
-	// Here do expansion of void for the bit map
-	// Here check validation of map
+	load_textures(&map);
+	if (!validate_textures(&map))
+		terminate_error(ERR_TEX, SYS_TEX);
+	load_colours(&map);
+	if (!validate_colours(&map))
+		terminate_error(ERR_CLR, SYS_CLR);
 }
 
-void	parse_texture_path(t_map *map, char *line, char *cmp)
+static void	load_textures(t_map *map)
 {
-	char	*path;
-
-	line += ft_strlen(cmp);
-	while (*line && ft_isspace(*line))
-		line++;
-	path = ft_strtrim(line, "\n");
-	if (!path)
-		terminate_error(ERR_MEM, SYS_MEM);
-	if (check_valid_path(path))
-	{
-		ft_delete(path);
-		terminate_error(ERR_BAD_RES, SYS_BAD_RES);
-	}
-	if (!ft_strncmp(NORTH, cmp, ft_strlen(NORTH)))
-		map->no_path = path;
-	else if (!ft_strncmp(SOUTH, cmp, ft_strlen(SOUTH)))
-		map->so_path = path;
-	else if (!ft_strncmp(WEST, cmp, ft_strlen(WEST)))
-		map->we_path = path;
-	else if (!ft_strncmp(EAST, cmp, ft_strlen(EAST)))
-		map->ea_path = path;
-	else if (!ft_strncmp(SPRITE, cmp, ft_strlen(SPRITE)))
-		map->s_path = path;
+	load_north_texture(map);
+	load_south_texture(map);
+	load_west_texture(map);
+	load_east_texture(map);
+	load_sprite_texture(map);
 }
 
-void	parse_color(char *line, t_map *map, char letter)
+static void	load_colours(t_map *map)
 {
-	int	r;
-	int	g;
-	int	b;
-
-	line++;
-	while (*line && ft_isspace(*line))
-		line++;
-	check_valid_number(&r, line);
-	while (*line && ft_isdigit(*line))
-		line++;
-	line++;
-	check_valid_number(&g, line);
-	while (*line && ft_isdigit(*line))
-		line++;
-	line++;
-	check_valid_number(&b, line);
-	if (letter == *FLOOR)
-		map->f_color = (r << 16) | (g << 8) | b;
-	else if (letter == *CEALING)
-		map->c_color = (r << 16) | (g << 8) | b;
+	load_floor_colour(map);
+	load_cealing_colour(map);
 }
 
-void	parse_map(char *line, t_map *map, int fd)
-{
-	char	**aux;
-	size_t	map_len;
+// void	parse_color(char *line, t_map *map, char letter)
+// {
 
-	if (map->grid_full)
-		terminate_error(ERR_MAP, SYS_MAP);
-	aux = ft_calloc(2, sizeof(char *));
-	map_len = 0;
-	while (get_line(&aux[map_len], fd))
-	{
-		if (!ft_ismap(aux[map_len][0]))
-			break ;
-		aux = ft_grid_realloc(aux, (map_len + 2), sizeof(char *));
-		map_len++;
-	}
-	map->grid = (char **)ft_calloc(ft_strcount(aux) + 2, sizeof(char *));
-	if (!map->grid)
-		terminate_error(ERR_MEM, SYS_MEM);
-	ft_gridcpy(map->grid, aux, line);
-	map->grid_full = TRUE;
-}
+// }

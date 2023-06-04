@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 18:08:37 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 19:51:37 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/04 19:29:36 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 # define TRUE	(int)1
 # define FALSE	(int)0
 # define UNUSED	(void)
+
+# define SPACES	(char *)" \n\t\v\f\r"
 
 typedef int					t_bool;
 typedef unsigned int		t_unt;

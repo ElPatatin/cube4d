@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:19:07 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 19:51:02 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:24:40 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,20 @@ static int	check_map_extension(char *cw_map);
 void	open_map(char *cw_map)
 {
 	int	fd;
+	int	map_len;
 
 	if (check_map_extension(cw_map))
 		terminate_error(ERR_EXT_MAP, SYS_EXT_MAP);
 	fd = open(cw_map, O_RDONLY);
 	if (fd < 0 || fd > OPEN_MAX)
 		terminate_error(ERR_OPEN_MAP, SYS_OPEN_MAP);
-	do_parse_map(fd);
+	get_map_length(fd, &map_len);
+	if (close(fd))
+		terminate_error(ERR_CLOSE_MAP, SYS_CLOSE_MAP);
+	fd = open(cw_map, O_RDONLY);
+	if (fd < 0 || fd > OPEN_MAX)
+		terminate_error(ERR_OPEN_MAP, SYS_OPEN_MAP);
+	get_map(fd, map_len);
 	if (close(fd))
 		terminate_error(ERR_CLOSE_MAP, SYS_CLOSE_MAP);
 }

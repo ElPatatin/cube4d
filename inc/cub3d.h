@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/21 21:23:47 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:21:15 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	hooks(t_mlx *vals);
 //
 // Init Window
 void	init_vals(t_mlx *vals, t_data *data);
+// Init Map
+void	init_map(t_map *map);
 
 // Util Function
 void	new_window(t_mlx *vals, t_data *data);

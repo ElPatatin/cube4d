@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:19:05 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:05:24 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:19:00 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@
 static void	load_textures(t_map *map);
 static void	load_colours(t_map *map);
 
-void	get_map(int fd, size_t map_len)
+void	get_map(int fd, size_t map_len, t_map *map)
 {
-	t_map	map;
-
-	init_map(&map);
-	map.length = map_len;
+	init_map(map, map_len);
 	read_map(fd, &map);
 	load_textures(&map);
 	if (!validate_textures(&map))

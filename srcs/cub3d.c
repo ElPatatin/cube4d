@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 17:54:41 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:20:33 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 
 int	main(int ac, char **av)
 {
+	t_map	map;
+
 	if (ac != 2)
 		return (print_error(ERR_ARGS, SYS_ARGS));
-	open_map(av[1]);
+	open_map(av[1], &map);
 	graphics();
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:16:15 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/04 20:39:51 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:19:23 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	init_vals(t_mlx *vals, t_data *data)
 	vals->data = data;
 }
 
-void	init_map(t_map *map)
+void	init_map(t_map *map, size_t map_len)
 {
 	map->map = NULL;
-	map->length = 0;
+	map->length = map_len;
 	map->no_path = NULL;
 	map->so_path = NULL;
 	map->we_path = NULL;

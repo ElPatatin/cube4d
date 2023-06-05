@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:23:46 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 17:57:28 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:20:06 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define VOID	(char)'V'
 
 // Parser Functions
-void	get_map(int fd, size_t map_len);
+void	get_map(int fd, size_t map_len, t_map *map);
 
 // Parser Utils Functions
 t_bool	check_valid_path(char *path);

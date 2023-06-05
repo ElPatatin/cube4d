@@ -6,7 +6,7 @@
 #    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/05 17:38:34 by cpeset-c         ###   ########.fr        #
+#    Updated: 2023/06/05 18:14:23 by cpeset-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,8 +83,7 @@ CUB_SRC	= cub3d.c \
 		cub3d_init_vals.c
 
 CUB_MAP	= cub_map.c \
-		cub_read_map.c \
-		cub_read_map_utils.c
+		cub_map_utils.c
 
 CUB_PRS	= cub_parser.c \
 		cub_parser_utils.c  \

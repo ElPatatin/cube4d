@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:19:07 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/04 20:24:40 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:18:24 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static int	check_map_extension(char *cw_map);
 
-void	open_map(char *cw_map)
+void	open_map(char *cw_map, t_map *map)
 {
 	int	fd;
 	int	map_len;
@@ -34,7 +34,7 @@ void	open_map(char *cw_map)
 	fd = open(cw_map, O_RDONLY);
 	if (fd < 0 || fd > OPEN_MAX)
 		terminate_error(ERR_OPEN_MAP, SYS_OPEN_MAP);
-	get_map(fd, map_len);
+	get_map(fd, map_len, map);
 	if (close(fd))
 		terminate_error(ERR_CLOSE_MAP, SYS_CLOSE_MAP);
 }
@@ -53,4 +53,21 @@ static int	check_map_extension(char *cw_map)
 	if (ft_strncmp(MAP_EXT, &cw_map[len - 4], ft_strlen(MAP_EXT)))
 		return (TRUE);
 	return (FALSE);
+}
+
+void	read_map(int fd, t_map *map)
+{
+	char	*line;
+	size_t	idx;
+
+	map->map = (char **)ft_calloc(map->length + 1, sizeof(char *));
+	if (!map->map)
+		terminate_error(ERR_MEM, SYS_MEM);
+	idx = 0;
+	while (get_line(&line, fd))
+	{
+		map->map[idx] = ft_strdup(line);
+		idx++;
+		ft_delete(line);
+	}
 }

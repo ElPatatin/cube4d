@@ -6,7 +6,7 @@
 #    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/04 20:45:16 by cpeset-c         ###   ########.fr        #
+#    Updated: 2023/06/05 15:31:06 by cpeset-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,9 @@ CUB_PRS	= cub_parser.c \
 		cub_parser_utils.c  \
 		cub_parser_textures.c \
 		cub_parser_textures_utils.c \
-		cub_parser_colours.c
+		cub_parser_colours.c \
+		cub_parser_map.c \
+		cub_parser_map_expander.c
 
 CUB_HUK	= key_hooks.c \
 		mouse_hooks.c
@@ -114,7 +116,7 @@ all: makelib $(NAME)
 	
 makelib:
 	@$(MAKE) -sC $(MLX_DIR)
-	@$(MAKE) -C $(LIB_DIR)
+	@$(MAKE) -sC $(LIB_DIR)
 
 $(NAME):: $(OBJS)
 	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(NAME)

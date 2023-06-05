@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:23:46 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/04 20:56:43 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:08:08 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,12 @@ t_bool	validate_textures(t_map *map);
 void	load_floor_colour(t_map *map);
 void	load_cealing_colour(t_map *map);
 void	parse_colour(char *line, int *colour, char letter);
+t_bool	validate_colours(t_map *map);
+
+// Parser Map Functions
+void	load_map(t_map *map);
+
+// Parser Map Expander Functions
+void	map_expander_handler(t_map *map, size_t width);
 
 #endif

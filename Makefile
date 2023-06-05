@@ -6,7 +6,7 @@
 #    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/05 18:14:23 by cpeset-c         ###   ########.fr        #
+#    Updated: 2023/06/05 19:04:31 by cpeset-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ UTL_DIR	:= utils/
 MAP_DIR	:= $(TUL_DIR)map_read/
 PRS_DIR	:= $(TUL_DIR)map_parser/
 HUK_DIR	:= $(TUL_DIR)cub_hooks/
+PLY_DIR	:= $(TUL_DIR)player/
+RAY_DIR	:= $(TUL_DIR)ray/
 
 OBJ_DIR	:= .objs/
 DEP_DIR	:= .deps/
@@ -97,6 +99,12 @@ CUB_PRS	= cub_parser.c \
 CUB_HUK	= key_hooks.c \
 		mouse_hooks.c
 
+CUB_PLY = player_move.c \
+		player_rotate.c
+
+CUB_RAY = ray_calc.c \
+		ray_dda.c
+
 CUB_UTL = cub3d_utils.c \
 		cub3d_errors.c
 
@@ -104,6 +112,8 @@ SRCS	+= $(addprefix $(SRC_DIR), $(CUB_SRC))
 SRCS	+= $(addprefix $(MAP_DIR), $(CUB_MAP))
 SRCS	+= $(addprefix $(PRS_DIR), $(CUB_PRS))
 SRCS	+= $(addprefix $(HUK_DIR), $(CUB_HUK))
+SRCS	+= $(addprefix $(PLY_DIR), $(CUB_PLY))
+SRCS	+= $(addprefix $(RAY_DIR), $(CUB_RAY))
 SRCS	+= $(addprefix $(UTL_DIR), $(CUB_UTL))
 
 OBJS	= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))

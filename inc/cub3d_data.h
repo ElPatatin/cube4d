@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/04 20:32:54 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:42:50 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,53 @@
 typedef struct s_mlx	t_mlx;
 typedef struct s_data	t_data;
 typedef struct s_map	t_map;
+typedef struct s_player	t_player;
+typedef struct s_ray	t_ray;
+typedef struct s_wall	t_wall;
+typedef struct s_game	t_game;
 
+struct s_player {
+	float	x;
+	float	y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+	int		move_up;
+	int		move_down;
+	int		move_left;
+	int		move_right;
+	int		rotate_left;
+	int		rotate_right;
+};
+
+struct s_ray
+{
+	float	dir_x;
+	float	dir_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	int		step_x;
+	int		step_y;
+	int		map_x;
+	int		map_y;
+	float	distance;
+	int		hit;
+	int		side;
+};
+
+struct s_wall
+{
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		color;
+};
 struct s_map {
+	int		width;
+	int		height;
 	char	**map;
 	size_t	length;
 	char	*no_path;
@@ -50,7 +95,18 @@ struct s_mlx
 	void	*ptr;
 	void	*win;
 	t_data	*data;
-	t_map	*map;
 };
+
+struct s_game
+{
+	t_map		map;
+	t_player	player;
+	t_ray		ray;
+	t_wall		wall;
+	t_mlx		mlx;
+	double		time;
+	double		old_time;
+};
+
 
 #endif

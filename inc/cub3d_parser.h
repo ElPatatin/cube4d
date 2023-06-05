@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:23:46 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:20:06 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:45:59 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 
 # define WALL		(char)'1'
 # define FREE		(char)'0'
-# define PLAYER_NO	(char)'N'
-# define PLAYER_SO	(char)'S'
-# define PLAYER_WE	(char)'W'
-# define PLAYER_EA	(char)'E'
+# define P_NO		(char)'N'
+# define P_SO		(char)'S'
+# define P_WE		(char)'W'
+# define P_EA		(char)'E'
 # define CLOSE_DOOR	(char)'D'
 # define OPEN_DOOR	(char)'C'
 

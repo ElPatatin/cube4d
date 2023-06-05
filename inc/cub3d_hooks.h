@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:57:18 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/05/06 19:10:28 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:01:42 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@
 # endif
 
 // Key Hooks
+int	handle_keys(int keycode, t_game *game);
+int	handle_keys_release(int keycode, t_game *game);
+int	handle_keys_press(int keycode, t_game *game);
 int	key_close_on_esc(int keycode, t_mlx *vals);
 int	key_print_hook(int keycode, t_mlx *vals);
 

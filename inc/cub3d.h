@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:19:39 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:59:50 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@
 # include "cub3d_data.h"
 
 // Graphics Function
-void	graphics(void);
+void	graphics(t_game *game);
 
-// Hooks Functin
-void	hooks(t_mlx *vals);
+// Hooks Function
+void	hooks(t_game *game);
+
+// Game Function
+int		game_loop(t_game *game);
 
 // Init Functions
 //
@@ -40,6 +43,9 @@ void	hooks(t_mlx *vals);
 void	init_vals(t_mlx *vals, t_data *data);
 // Init Map
 void	init_map(t_map *map, size_t map_len);
+// Init Player
+void	init_player(t_game *game);
+
 
 // Util Function
 void	new_window(t_mlx *vals, t_data *data);

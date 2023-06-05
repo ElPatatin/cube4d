@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:23:46 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 16:08:08 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 17:57:28 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,8 @@ void	load_map(t_map *map);
 
 // Parser Map Expander Functions
 void	map_expander_handler(t_map *map, size_t width);
+
+// Parser Map Validation Functions
+t_bool	validate_map(t_map *map);
 
 #endif

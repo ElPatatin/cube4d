@@ -6,7 +6,7 @@
 #    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/05 15:31:06 by cpeset-c         ###   ########.fr        #
+#    Updated: 2023/06/05 17:38:34 by cpeset-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,8 @@ CUB_PRS	= cub_parser.c \
 		cub_parser_textures_utils.c \
 		cub_parser_colours.c \
 		cub_parser_map.c \
-		cub_parser_map_expander.c
+		cub_parser_map_expander.c \
+		cub_parser_map_validation.c
 
 CUB_HUK	= key_hooks.c \
 		mouse_hooks.c

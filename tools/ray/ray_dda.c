@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:42:11 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/05/21 10:58:00 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/09 20:18:38 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	calc_wall_draw_parameters(t_game *game)
 	game->wall.draw_end = game->wall.line_height / 2 + WINHEIGHT / 2;
 	if (game->wall.draw_end >= WINHEIGHT)
 		game->wall.draw_end = WINHEIGHT - 1;
-	game->wall.color = 0xFFFF00;
+	game->wall.color = 0x66B2B2;
 	if (game->ray.side == 1)
-		game->wall.color = 0x00FFFF;
+		game->wall.color = 0x387185;
 }

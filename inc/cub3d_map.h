@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:45:34 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/09 19:02:35 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:17:07 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_MAP_H
 
 # include "cub3d_data.h"
+# include "libft.h"
 
 # define MAP_EXT	(char *)".cub"
 
@@ -26,7 +27,6 @@ t_bool	while_isspace(char *str);
 t_bool	while_isdigit(char *str);
 int		get_line(char **line, int fd);
 void	get_map_length(int fd, int *map_len);
-void	built_valid_chars(char *valid_chars);
-
+void	built_valid_chars(char *valid_chars, int *nullable);
 
 #endif

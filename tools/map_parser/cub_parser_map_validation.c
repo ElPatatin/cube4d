@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:35:36 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/09 19:08:25 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:14:29 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static t_bool	check_map_characters(char **grid, size_t width, size_t height)
 	char	valid_chars[10];
 	int		valid_chars_count;
 
-	built_valid_chars(valid_chars);
+	built_valid_chars(valid_chars, &player_count);
 	valid_chars_count = sizeof(valid_chars) / sizeof(valid_chars[0]);
 	y = 0;
 	while (y < height)

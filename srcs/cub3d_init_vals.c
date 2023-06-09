@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:16:15 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:46:49 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:21:25 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	init_map(t_map *map, size_t map_len)
 
 void	init_player(t_game *game)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = -1;
 	while (++i < game->map.height)
@@ -64,6 +64,7 @@ void	init_player(t_game *game)
 				game->player.y = j;
 				init_player_dir(game, i, j);
 				init_player_plane(game, i, j);
+				return ;
 			}
 		}
 	}

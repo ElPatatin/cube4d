@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 17:23:46 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:45:59 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:03:32 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,17 @@ void	parse_colour(char *line, int *colour, char letter);
 t_bool	validate_colours(t_map *map);
 
 // Parser Map Functions
-void	load_map(t_map *map);
+size_t	get_max_length(t_map *map);
+void	allocate_grid(t_map *map, size_t width);
+void	replace_spaces_with_void(t_map *map);
 
 // Parser Map Expander Functions
 void	map_expander_handler(t_map *map, size_t width);
 
 // Parser Map Validation Functions
 t_bool	validate_map(t_map *map);
+
+// Parser Map Format Functions
+void	format_map(t_map *map);
 
 #endif

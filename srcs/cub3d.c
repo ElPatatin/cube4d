@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 19:03:33 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:04:19 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (print_error(ERR_ARGS, SYS_ARGS));
-	open_map(av[1], &map);
+	map_handler(av[1], &map);
 	game.map = map;
 	init_player(&game);
 	graphics(&game);

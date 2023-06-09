@@ -6,23 +6,26 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:35:36 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:04:31 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:08:25 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "cub3d_data.h"
 #include "cub3d_parser.h"
+#include "cub3d_map.h"
 #include "cub3d_errors.h"
 
 static t_bool	check_void_surroundings(char **grid,
 					size_t width, size_t height);
 static t_bool	is_surrounded_by_void_or_wall(char **grid, size_t x, size_t y);
+static t_bool	check_map_characters(char **grid, size_t width, size_t height);
 
 t_bool	validate_map(t_map *map)
 {
-	if (!check_void_surroundings(map->grid,
-			ft_strlen(map->grid[0]), ft_strcount(map->grid)))
+	if (!check_void_surroundings(map->grid, map->width, map->height))
+		return (FALSE);
+	if (!check_map_characters(map->grid, map->width, map->height))
 		return (FALSE);
 	return (TRUE);
 }
@@ -73,6 +76,35 @@ static t_bool	is_surrounded_by_void_or_wall(char **grid, size_t x, size_t y)
 				return (FALSE);
 		}
 		++idx;
+	}
+	return (TRUE);
+}
+
+static t_bool	check_map_characters(char **grid, size_t width, size_t height)
+{
+	size_t	x;
+	size_t	y;
+	int		player_count;
+	char	valid_chars[10];
+	int		valid_chars_count;
+
+	built_valid_chars(valid_chars);
+	valid_chars_count = sizeof(valid_chars) / sizeof(valid_chars[0]);
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			if (!ft_strchr(valid_chars, grid[y][x]))
+				return (FALSE);
+			if (ft_strchr("NSEW", grid[y][x]))
+				player_count++;
+			if (player_count > 1)
+				return (FALSE);
+			x++;
+		}
+		y++;
 	}
 	return (TRUE);
 }

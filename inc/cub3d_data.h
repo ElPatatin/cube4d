@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:42:50 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 17:48:00 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,10 @@ struct s_wall
 	int		draw_end;
 	int		color;
 };
+
 struct s_map {
-	int		width;
-	int		height;
+	size_t	width;
+	size_t	height;
 	char	**map;
 	size_t	length;
 	char	*no_path;

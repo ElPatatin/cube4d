@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 11:28:27 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 16:04:34 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:02:54 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,7 @@
 #include "cub3d_parser.h"
 #include "cub3d_errors.h"
 
-static size_t	get_max_length(t_map *map);
-static void		allocate_grid(t_map *map, size_t width);
-static void		replace_spaces_with_void(t_map *map);
-
-void	load_map(t_map *map)
-{
-	size_t	width;
-
-	width = get_max_length(map);
-	allocate_grid(map, width);
-	replace_spaces_with_void(map);
-	map_expander_handler(map, width);
-}
-
-static size_t	get_max_length(t_map *map)
+size_t	get_max_length(t_map *map)
 {
 	size_t	max;
 	size_t	idx;
@@ -46,7 +32,7 @@ static size_t	get_max_length(t_map *map)
 	return (max);
 }
 
-static void	allocate_grid(t_map *map, size_t width)
+void	allocate_grid(t_map *map, size_t width)
 {
 	size_t	idx;
 	size_t	len;
@@ -68,7 +54,7 @@ static void	allocate_grid(t_map *map, size_t width)
 	}
 }
 
-static void	replace_spaces_with_void(t_map *map)
+void	replace_spaces_with_void(t_map *map)
 {
 	size_t	idx;
 	size_t	len;

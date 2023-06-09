@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 16:55:49 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:14:47 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:05:46 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,18 @@ int	get_line(char **line, int fd)
 	if (!*line)
 		return ((intptr_t)ft_delete(*line));
 	return (TRUE);
+}
+
+void	built_valid_chars(char *valid_chars)
+{
+	valid_chars[0] = WALL;
+	valid_chars[1] = FREE;
+	valid_chars[2] = P_NO;
+	valid_chars[3] = P_SO;
+	valid_chars[4] = P_WE;
+	valid_chars[5] = P_EA;
+	valid_chars[6] = CLOSE_DOOR;
+	valid_chars[7] = OPEN_DOOR;
+	valid_chars[8] = VOID;
+	valid_chars[9] = '\0';
 }

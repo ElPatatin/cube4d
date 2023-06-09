@@ -6,7 +6,7 @@
 #    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/05 19:04:31 by cpeset-c         ###   ########.fr        #
+#    Updated: 2023/06/09 17:52:12 by cpeset-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,8 @@ CUB_PRS	= cub_parser.c \
 		cub_parser_colours.c \
 		cub_parser_map.c \
 		cub_parser_map_expander.c \
-		cub_parser_map_validation.c
+		cub_parser_map_validation.c \
+		cub_parser_format_map.c
 
 CUB_HUK	= key_hooks.c \
 		mouse_hooks.c
@@ -129,7 +130,7 @@ makelib:
 	@$(MAKE) -sC $(LIB_DIR)
 
 $(NAME):: $(OBJS)
-	$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(NAME)
+	@$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(NAME)
 	@printf "\n\t$(WHITE)Program \033[1;31mCub3D $(WHITE)has been compiled!$(DEF_COLOR)\n"
 
 $(NAME)::

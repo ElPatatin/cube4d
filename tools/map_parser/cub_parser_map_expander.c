@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:30:21 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 17:35:10 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:04:04 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,4 @@ static void	aux_add_padding(char **new_grid, size_t new_width, size_t idx)
 		terminate_error(ERR_MEM, SYS_MEM);
 	ft_memset(new_grid[idx], VOID, new_width);
 }
+

@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:19:07 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:38:20 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:52:35 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static int	check_map_extension(char *cw_map);
 
-void	open_map(char *cw_map, t_map *map)
+void	map_handler(char *cw_map, t_map *map)
 {
 	int	fd;
 	int	map_len;

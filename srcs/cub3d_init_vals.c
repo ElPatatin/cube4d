@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:16:15 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/09 18:21:25 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/10 13:46:45 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	init_player(t_game *game)
 	size_t	j;
 
 	i = -1;
+	game->player.move_up = 0;
+	game->player.move_down = 0;
+	game->player.move_left = 0;
+	game->player.move_right = 0;
+	game->player.rotate_left = 0;
+	game->player.rotate_right = 0;
 	while (++i < game->map.height)
 	{
 		j = -1;
@@ -68,12 +74,6 @@ void	init_player(t_game *game)
 			}
 		}
 	}
-	game->player.move_up = 0;
-	game->player.move_down = 0;
-	game->player.move_left = 0;
-	game->player.move_right = 0;
-	game->player.rotate_left = 0;
-	game->player.rotate_right = 0;
 }
 
 static void	init_player_dir(t_game *game, int i, int j)

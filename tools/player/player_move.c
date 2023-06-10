@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:31:35 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/05/21 18:49:24 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/10 13:52:35 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	handle_player_movement(t_game *game)
 static void	move_forward(t_game *game)
 {
 	if (game->map.grid[(int)(game->player.x + game->player.dir_x * MOVE_SPEED)]
-		[(int)game->player.y] == '0')
+		[(int)game->player.y] != '1')
 	{
 		game->player.x += game->player.dir_x * MOVE_SPEED;
 	}
 	if (game->map.grid[(int)game->player.x]
-		[(int)(game->player.y + game->player.dir_y * MOVE_SPEED)] == '0')
+		[(int)(game->player.y + game->player.dir_y * MOVE_SPEED)] != '1')
 	{
 		game->player.y += game->player.dir_y * MOVE_SPEED;
 	}
@@ -49,40 +49,40 @@ static void	move_forward(t_game *game)
 static void	move_backward(t_game *game)
 {
 	if (game->map.grid[(int)(game->player.x - game->player.dir_x * MOVE_SPEED)]
-		[(int)game->player.y] == '0')
+		[(int)game->player.y] != '1')
 	{
 		game->player.x -= game->player.dir_x * MOVE_SPEED;
 	}
 	if (game->map.grid[(int)game->player.x]
-		[(int)(game->player.y - game->player.dir_y * MOVE_SPEED)] == '0')
+		[(int)(game->player.y - game->player.dir_y * MOVE_SPEED)] != '1')
 	{
 		game->player.y -= game->player.dir_y * MOVE_SPEED;
 	}
 }
 
-static void	move_left(t_game *game)
+static void	move_right(t_game *game)
 {
 	if (game->map.grid[(int)(game->player.x - game->player.dir_y * MOVE_SPEED)]
-		[(int)game->player.y] == '0')
+		[(int)game->player.y] != '1')
 	{
 		game->player.x -= game->player.dir_y * MOVE_SPEED;
 	}
 	if (game->map.grid[(int)game->player.x]
-		[(int)(game->player.y + game->player.dir_x * MOVE_SPEED)] == '0')
+		[(int)(game->player.y + game->player.dir_x * MOVE_SPEED)] != '1')
 	{
 		game->player.y += game->player.dir_x * MOVE_SPEED;
 	}
 }
 
-static void	move_right(t_game *game)
+static void	move_left(t_game *game)
 {
 	if (game->map.grid[(int)(game->player.x + game->player.dir_y * MOVE_SPEED)]
-		[(int)game->player.y] == '0')
+		[(int)game->player.y] != '1')
 	{
 		game->player.x += game->player.dir_y * MOVE_SPEED;
 	}
 	if (game->map.grid[(int)game->player.x]
-		[(int)(game->player.y - game->player.dir_x * MOVE_SPEED)] == '0')
+		[(int)(game->player.y - game->player.dir_x * MOVE_SPEED)] != '1')
 	{	
 		game->player.y -= game->player.dir_x * MOVE_SPEED;
 	}

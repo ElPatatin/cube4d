@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:32:34 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/05/21 18:46:07 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/10 13:45:02 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	handle_player_rotation(t_game *game)
 		rotate_right(game);
 }
 
-static void	rotate_left(t_game *game)
+static void	rotate_right(t_game *game)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -43,7 +43,7 @@ static void	rotate_left(t_game *game)
 		+ game->player.plane_y * cos(ROT_SPEED);
 }
 
-static void	rotate_right(t_game *game)
+static void	rotate_left(t_game *game)
 {
 	double	old_dir_x;
 	double	old_plane_x;

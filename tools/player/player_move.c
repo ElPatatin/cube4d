@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:31:35 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/06/10 13:52:35 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:36:32 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	move_backward(t_game *game)
 	}
 }
 
-static void	move_right(t_game *game)
+static void	move_left(t_game *game)
 {
 	if (game->map.grid[(int)(game->player.x - game->player.dir_y * MOVE_SPEED)]
 		[(int)game->player.y] != '1')
@@ -74,7 +74,7 @@ static void	move_right(t_game *game)
 	}
 }
 
-static void	move_left(t_game *game)
+static void	move_right(t_game *game)
 {
 	if (game->map.grid[(int)(game->player.x + game->player.dir_y * MOVE_SPEED)]
 		[(int)game->player.y] != '1')

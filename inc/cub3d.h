@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 18:59:50 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:23:38 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	hooks(t_game *game);
 // Game Function
 int		game_loop(t_game *game);
 
-// Init Functions
-//
 // Init Window
 void	init_vals(t_mlx *vals, t_data *data);
 // Init Map
 void	init_map(t_map *map, size_t map_len);
+// Init Imgs
+t_imgs	init_imgs(t_game *game);
 // Init Player
 void	init_player(t_game *game);
 

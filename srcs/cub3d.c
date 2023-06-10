@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/10 13:52:21 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/10 17:32:44 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	graphics(t_game *game)
 
 	init_vals(&vals, &data);
 	game->mlx = vals;
+	game->imgs = init_imgs(game);
 	new_window(&game->mlx, game->mlx.data);
 	hooks(game);
 	game_loop(game);

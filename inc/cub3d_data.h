@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/09 17:48:00 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:27:29 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_data	t_data;
 typedef struct s_map	t_map;
 typedef struct s_player	t_player;
 typedef struct s_ray	t_ray;
+typedef struct s_imgs	t_imgs;
 typedef struct s_wall	t_wall;
 typedef struct s_game	t_game;
 
@@ -57,6 +58,17 @@ struct s_ray
 	float	distance;
 	int		hit;
 	int		side;
+};
+
+struct s_imgs
+{
+	void	*north;
+	void	*south;
+	void	*east;
+	void	*west;
+	void	*sprite;
+	int		width;
+	int		height;
 };
 
 struct s_wall
@@ -104,6 +116,7 @@ struct s_game
 	t_player	player;
 	t_ray		ray;
 	t_wall		wall;
+	t_imgs		imgs;
 	t_mlx		mlx;
 	double		time;
 	double		old_time;

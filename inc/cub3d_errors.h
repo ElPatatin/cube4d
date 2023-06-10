@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:03:58 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/04 20:17:56 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:27:13 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ERR_DUP_CLR	(char *)"\aMap colour is duplicated!\n"
 # define ERR_BAD_CLR	(char *)"\aMap colour is invalid!\n"
 # define ERR_CLR		(char *)"\aA map colour was found missing!\n"
+# define ERR_IMG		(char *)"\aA map image was found missing or invalid!\n"
 
 // Error Codes
 # define SYS_ARGS		(int)1
@@ -49,6 +50,7 @@
 # define SYS_DUP_CLR	(int)14
 # define SYS_BAD_CLR	(int)15
 # define SYS_CLR		(int)16
+# define SYS_IMG		(int)17
 
 int		print_error(char *str, int syserr);
 void	terminate_error(char *str, int syserr);

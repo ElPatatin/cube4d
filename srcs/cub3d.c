@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/11 17:49:00 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:57:49 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,9 @@ static void	render_game(t_game *game)
 		calc_ray_step_and_side_dist(game);
 		perform_dda(game);
 		y = game->wall.draw_start - 1;
+		game->wall.color = 0x387185;
+		if (game->ray.side == 1)
+			game->wall.color = (game->wall.color >> 1) & 8355711;
 		while (++y < game->wall.draw_end)
 			ft_mlx_put_pixels(game->mlx.data, x, y, game->wall.color);
 	}

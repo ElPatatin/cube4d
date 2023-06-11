@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:42:11 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/06/11 17:47:27 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:57:38 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,4 @@ static void	calc_wall_draw_parameters(t_game *game)
 	game->wall.draw_end = game->wall.line_height / 2 + WINHEIGHT / 2;
 	if (game->wall.draw_end >= WINHEIGHT)
 		game->wall.draw_end = WINHEIGHT - 1;
-	game->wall.color = 0x387185;
-	if (game->ray.side == 1)
-		game->wall.color = (game->wall.color >> 1) & 8355711;
 }

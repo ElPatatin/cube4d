@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:16:15 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/10 16:34:55 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/11 13:13:19 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,4 @@ void	init_map(t_map *map, size_t map_len)
 	map->floor_colour = 0;
 	map->ceiling_colour = 0;
 	map->grid = NULL;
-}
-
-t_imgs	init_imgs(t_game *game)
-{
-	t_imgs	imgs;
-
-	imgs.width = 256;
-	imgs.height = 256;
-	imgs.north = mlx_xpm_file_to_image(game->mlx.ptr,
-			game->map.no_path, &imgs.width, &imgs.height);
-	imgs.south = mlx_xpm_file_to_image(game->mlx.ptr,
-			game->map.so_path, &imgs.width, &imgs.height);
-	imgs.west = mlx_xpm_file_to_image(game->mlx.ptr,
-			game->map.we_path, &imgs.width, &imgs.height);
-	imgs.east = mlx_xpm_file_to_image(game->mlx.ptr,
-			game->map.ea_path, &imgs.width, &imgs.height);
-	imgs.sprite = mlx_xpm_file_to_image(game->mlx.ptr,
-			game->map.s_path, &imgs.width, &imgs.height);
-	if (!imgs.north || !imgs.south || !imgs.west || !imgs.east || !imgs.sprite)
-		terminate_error(ERR_IMG, SYS_IMG);
-	return (imgs);
 }

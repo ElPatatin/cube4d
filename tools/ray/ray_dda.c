@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:42:11 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/06/10 16:50:05 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:47:27 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,13 @@ static void	do_dda_step(t_game *game);
 static void	calc_perp_wall_distance(t_game *game);
 static void	calc_wall_draw_parameters(t_game *game);
 
-void	perform_dda(t_game *game, t_mlx *vals, int x)
+void	perform_dda(t_game *game)
 {
-	int	y;
-
 	game->ray.hit = 0;
 	while (game->ray.hit == 0)
 		do_dda_step(game);
 	calc_perp_wall_distance(game);
 	calc_wall_draw_parameters(game);
-	y = game->wall.draw_start - 1;
-	while (++y < game->wall.draw_end)
-		ft_mlx_put_pixels(vals->data, x, y, game->wall.color);
 }
 
 static void	do_dda_step(t_game *game)
@@ -68,7 +63,7 @@ static void	calc_wall_draw_parameters(t_game *game)
 	game->wall.draw_end = game->wall.line_height / 2 + WINHEIGHT / 2;
 	if (game->wall.draw_end >= WINHEIGHT)
 		game->wall.draw_end = WINHEIGHT - 1;
-	game->wall.color = 0x66B2B2;
+	game->wall.color = 0x387185;
 	if (game->ray.side == 1)
-		game->wall.color = 0x387185;
+		game->wall.color = (game->wall.color >> 1) & 8355711;
 }

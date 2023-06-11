@@ -6,7 +6,7 @@
 #    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/10 16:18:21 by cpeset-c         ###   ########.fr        #
+#    Updated: 2023/06/11 13:53:28 by cpeset-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
 
 CUB_SRC	= cub3d.c \
 		cub3d_init_vals.c \
+		cub3d_init_imgs.c \
 		cub3d_init_player.c
 
 CUB_MAP	= cub_map.c \

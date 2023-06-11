@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/10 16:27:29 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/11 17:50:17 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 # define WINWIDTH	(int)1920
 # define TITLE		(char *)"cub3d gatito miau miau"
 
-typedef struct s_mlx	t_mlx;
-typedef struct s_data	t_data;
-typedef struct s_map	t_map;
-typedef struct s_player	t_player;
-typedef struct s_ray	t_ray;
-typedef struct s_imgs	t_imgs;
-typedef struct s_wall	t_wall;
-typedef struct s_game	t_game;
+typedef struct s_mlx		t_mlx;
+typedef struct s_data		t_data;
+typedef struct s_map		t_map;
+typedef struct s_player		t_player;
+typedef struct s_ray		t_ray;
+typedef struct s_img_data	t_img_data;
+typedef struct s_imgs		t_imgs;
+typedef struct s_wall		t_wall;
+typedef struct s_game		t_game;
 
 struct s_player {
 	float	x;
@@ -60,15 +61,24 @@ struct s_ray
 	int		side;
 };
 
-struct s_imgs
+struct s_img_data
 {
-	void	*north;
-	void	*south;
-	void	*east;
-	void	*west;
-	void	*sprite;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
 	int		width;
 	int		height;
+};
+
+struct s_imgs
+{
+	t_img_data	north;
+	t_img_data	south;
+	t_img_data	east;
+	t_img_data	west;
+	t_img_data	sprite;
 };
 
 struct s_wall
@@ -120,7 +130,7 @@ struct s_game
 	t_mlx		mlx;
 	double		time;
 	double		old_time;
+	int			**buffer;
 };
-
 
 #endif

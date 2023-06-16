@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/11 17:50:17 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/16 18:17:11 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ struct s_player {
 	int		move_right;
 	int		rotate_left;
 	int		rotate_right;
+	int		mouse_pos;
+	int		mouse_last_pos;
 };
 
 struct s_ray

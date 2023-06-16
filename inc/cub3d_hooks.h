@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:57:18 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/05 19:01:42 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:50:08 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int	key_print_hook(int keycode, t_mlx *vals);
 
 // Mouse Hooks
 int	mouse_close_onclick(t_mlx *vals);
+int	mouse_camera_handler(int x, int y, t_game *game);
 
 #endif

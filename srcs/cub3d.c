@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/17 10:44:54 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/17 11:50:00 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ void	hooks(t_game *game)
 	mlx_hook((&game->mlx)->win, 2, 1L << 0, handle_keys_press, game);
 	mlx_hook((&game->mlx)->win, 3, 1L << 1, handle_keys_release, game);
 	mlx_hook((&game->mlx)->win, 17, 0, mouse_close_onclick, &game->mlx);
-	// mlx_hook((&game->mlx)->win, 6, 1L << 13, mouse_camera_handler, game);
+	mlx_hook((&game->mlx)->win, 4, 1L << 2, mouse_press_handler, game);
+	mlx_hook((&game->mlx)->win, 5, 1L << 3, mouse_release_handler, game);
+	mlx_hook((&game->mlx)->win, 6, 1L << 6, mouse_camera_handler, game);
 }

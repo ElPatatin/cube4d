@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_data.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/16 18:17:11 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/17 11:37:06 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ struct s_player {
 	int		move_right;
 	int		rotate_left;
 	int		rotate_right;
-	int		mouse_pos;
-	int		mouse_last_pos;
+	int		mouse_rotate;
+	double	normalized_rotate_speed;
 };
 
 struct s_ray

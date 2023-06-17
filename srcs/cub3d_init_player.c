@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_init_player.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:16:09 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/10 16:18:45 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/17 11:51:28 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	init_player(t_game *game)
 	game->player.move_right = 0;
 	game->player.rotate_left = 0;
 	game->player.rotate_right = 0;
+	game->player.mouse_rotate = 0;
+	game->player.normalized_rotate_speed = 0;
 	while (++i < game->map.height)
 	{
 		j = -1;

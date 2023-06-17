@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_parser_map_validation.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:35:36 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/09 19:14:29 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/17 10:15:16 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ static t_bool	is_surrounded_by_void_or_wall(char **grid, size_t x, size_t y)
 	{
 		nx = x + dx[idx];
 		ny = y + dy[idx];
-		if (nx >= 0 && ny >= 0
-			&& nx < ft_strlen(*grid) && ny < ft_strcount(grid))
+		if (nx < ft_strlen(*grid) && ny < ft_strcount(grid))
 		{
 			if (grid[ny][nx] != 'V' && grid[ny][nx] != '1')
 				return (FALSE);
@@ -86,10 +85,8 @@ static t_bool	check_map_characters(char **grid, size_t width, size_t height)
 	size_t	y;
 	int		player_count;
 	char	valid_chars[10];
-	int		valid_chars_count;
 
 	built_valid_chars(valid_chars, &player_count);
-	valid_chars_count = sizeof(valid_chars) / sizeof(valid_chars[0]);
 	y = 0;
 	while (y < height)
 	{

@@ -6,7 +6,7 @@
 /*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:16:09 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/17 11:51:28 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/17 11:58:20 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "cub3d_errors.h"
 #include "cub3d_parser.h"
 
+static void	init_player_move_rotate(t_game *game);
 static void	init_player_dir(t_game *game, int i, int j);
 static void	init_player_plane(t_game *game, int i, int j);
 
@@ -24,14 +25,7 @@ void	init_player(t_game *game)
 	size_t	j;
 
 	i = -1;
-	game->player.move_up = 0;
-	game->player.move_down = 0;
-	game->player.move_left = 0;
-	game->player.move_right = 0;
-	game->player.rotate_left = 0;
-	game->player.rotate_right = 0;
-	game->player.mouse_rotate = 0;
-	game->player.normalized_rotate_speed = 0;
+	init_player_move_rotate(game);
 	while (++i < game->map.height)
 	{
 		j = -1;
@@ -47,6 +41,18 @@ void	init_player(t_game *game)
 			}
 		}
 	}
+}
+
+static void	init_player_move_rotate(t_game *game)
+{
+	game->player.move_up = 0;
+	game->player.move_down = 0;
+	game->player.move_left = 0;
+	game->player.move_right = 0;
+	game->player.rotate_left = 0;
+	game->player.rotate_right = 0;
+	game->player.mouse_rotate = 0;
+	game->player.normalized_rotate_speed = 0;
 }
 
 static void	init_player_dir(t_game *game, int i, int j)

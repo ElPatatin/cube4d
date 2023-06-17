@@ -6,7 +6,7 @@
 #    By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/17 10:15:53 by ogonzale         ###   ########.fr        #
+#    Updated: 2023/06/17 10:37:54 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,8 @@ CUB_PLY = player_move.c \
 		player_rotate.c
 
 CUB_RAY = ray_calc.c \
-		ray_dda.c
+		ray_dda.c \
+		draw.c
 
 CUB_UTL = cub3d_utils.c \
 		cub3d_errors.c

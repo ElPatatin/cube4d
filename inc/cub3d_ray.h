@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_ray.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:25:14 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/06/11 17:47:35 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/17 10:38:56 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ void	calc_ray_step_and_side_dist(t_game *game);
 
 // DDA
 void	perform_dda(t_game *game);
+
+// Draw
+void	draw_wall_and_background(t_game *game, int x);
 
 #endif

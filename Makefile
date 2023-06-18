@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
+#    By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/11 13:53:28 by cpeset-c         ###   ########.fr        #
+#    Updated: 2023/06/17 10:37:54 by ogonzale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ MLX_DIR	= minilibx/
 UNAME	= $(shell uname -s)
 
 CFLAGS		= -Wall -Wextra -Werror -W
-XFLAGS		= -fsanitize=address -g
+# XFLAGS		= -fsanitize=address -g
 DFLAGS		= -MT $@ -MMD -MP
 
 ifeq ($(UNAME), Darwin)
@@ -106,7 +106,8 @@ CUB_PLY = player_move.c \
 		player_rotate.c
 
 CUB_RAY = ray_calc.c \
-		ray_dda.c
+		ray_dda.c \
+		draw.c
 
 CUB_UTL = cub3d_utils.c \
 		cub3d_errors.c
@@ -132,7 +133,7 @@ makelib:
 	@$(MAKE) -sC $(LIB_DIR)
 
 $(NAME):: $(OBJS)
-	@$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(GFLAGS) $(LIBRARY) -o $(NAME)
 	@printf "\n\t$(WHITE)Program \033[1;31mCub3D $(WHITE)has been compiled!$(DEF_COLOR)\n"
 
 $(NAME)::

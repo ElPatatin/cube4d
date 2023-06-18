@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_parser_textures_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:05:34 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/04 20:43:32 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/17 10:30:32 by ogonzale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	parse_texture(char **line, char **texture, char *type)
 	*texture = ft_strdup(path);
 	if (!*texture)
 		terminate_error(ERR_MEM, SYS_MEM);
+	free(path);
 	ft_delete(*line);
 	*line = ft_strdup("");
 	if (!*line)

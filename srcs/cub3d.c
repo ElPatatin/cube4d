@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:16:51 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/17 11:50:00 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/18 14:00:53 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	render_game(t_game *game)
 		perform_dda(game);
 		draw_wall_and_background(game, x);
 	}
+	draw_buffer(game);
 }
 
 void	hooks(t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_data.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:54:19 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/17 11:37:06 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/18 18:06:26 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define CUB3D_DATA_H
 
 # include <stddef.h>
+# include "libft.h"
+
+# include "cub3d_images.h"
 
 # define WINHEIGHT	(int)1080
 # define WINWIDTH	(int)1920
@@ -24,8 +27,6 @@ typedef struct s_data		t_data;
 typedef struct s_map		t_map;
 typedef struct s_player		t_player;
 typedef struct s_ray		t_ray;
-typedef struct s_img_data	t_img_data;
-typedef struct s_imgs		t_imgs;
 typedef struct s_wall		t_wall;
 typedef struct s_game		t_game;
 
@@ -63,32 +64,17 @@ struct s_ray
 	int		side;
 };
 
-struct s_img_data
-{
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		width;
-	int		height;
-};
-
-struct s_imgs
-{
-	t_img_data	north;
-	t_img_data	south;
-	t_img_data	east;
-	t_img_data	west;
-	t_img_data	sprite;
-};
-
 struct s_wall
 {
+	double	wall_x;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
 	int		color;
+	double	tex_step;
+	double	tex_pos;
+	int		tex_x;
+	int		tex_y;
 };
 
 struct s_map {
@@ -128,11 +114,11 @@ struct s_game
 	t_player	player;
 	t_ray		ray;
 	t_wall		wall;
+	t_buffer	buffer;
 	t_imgs		imgs;
 	t_mlx		mlx;
 	double		time;
 	double		old_time;
-	int			**buffer;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:13:12 by cpeset-c          #+#    #+#             */
-/*   Updated: 2023/06/11 17:50:22 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/18 18:12:39 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		init_map(t_map *map, size_t map_len);
 
 // Init Imgs
 void		init_imgs(t_game *game);
-t_img_data	init_img_data(t_game *game, int width, int height);
+t_img_data	init_img_data(t_game *game);
 int			*load_img(t_img_data *img_data);
 
 // Init Player

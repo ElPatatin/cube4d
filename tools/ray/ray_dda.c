@@ -6,7 +6,7 @@
 /*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:42:11 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/06/11 17:57:38 by cpeset-c         ###   ########.fr       */
+/*   Updated: 2023/06/18 13:49:20 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "cub3d_data.h"
 #include "cub3d_errors.h"
 #include "cub3d_ray.h"
+#include "cub3d_images.h"
 
 static void	do_dda_step(t_game *game);
 static void	calc_perp_wall_distance(t_game *game);
@@ -56,6 +57,12 @@ static void	calc_perp_wall_distance(t_game *game)
 
 static void	calc_wall_draw_parameters(t_game *game)
 {
+	if (game->ray.side == 0)
+		game->wall.wall_x = game->player.y + \
+		game->ray.distance * game->ray.dir_y;
+	else
+		game->wall.wall_x = game->player.x + \
+		game->ray.distance * game->ray.dir_x;
 	game->wall.line_height = (int)(WINHEIGHT / game->ray.distance);
 	game->wall.draw_start = -game->wall.line_height / 2 + WINHEIGHT / 2;
 	if (game->wall.draw_start < 0)
@@ -63,4 +70,7 @@ static void	calc_wall_draw_parameters(t_game *game)
 	game->wall.draw_end = game->wall.line_height / 2 + WINHEIGHT / 2;
 	if (game->wall.draw_end >= WINHEIGHT)
 		game->wall.draw_end = WINHEIGHT - 1;
+	game->wall.tex_step = 1.0 * TEXHEIGHT / game->wall.line_height;
+	game->wall.tex_pos = (game->wall.draw_start - WINHEIGHT / 2 + \
+		game->wall.line_height / 2) * game->wall.tex_step;
 }

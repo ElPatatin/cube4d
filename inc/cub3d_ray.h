@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_ray.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 10:25:14 by ogonzale          #+#    #+#             */
-/*   Updated: 2023/06/17 10:38:56 by ogonzale         ###   ########.fr       */
+/*   Updated: 2023/06/18 13:03:06 by cpeset-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void	perform_dda(t_game *game);
 
 // Draw
 void	draw_wall_and_background(t_game *game, int x);
+int		**build_buffer(t_game *game);
+void	draw_buffer(t_game *game);
 
 #endif

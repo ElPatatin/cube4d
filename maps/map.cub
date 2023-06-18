@@ -4,8 +4,8 @@ WE ./resources/west.xpm
 E ./resources/east.xpm
 S ./resources/sprite.xpm
 
-F 255,0,255
-C 100,50,200
+F 100,100,100
+C 35,35,35
 
         111111111111111111111111111111111           
         100000000000110000000000000000001           

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ogonzale <ogonzale@student.42.fr>          +#+  +:+       +#+         #
+#    By: cpeset-c <cpeset-c@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/07 19:56:27 by cpeset-c          #+#    #+#              #
-#    Updated: 2023/06/17 10:37:54 by ogonzale         ###   ########.fr        #
+#    Updated: 2023/06/18 18:13:44 by cpeset-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ PRS_DIR	:= $(TUL_DIR)map_parser/
 HUK_DIR	:= $(TUL_DIR)cub_hooks/
 PLY_DIR	:= $(TUL_DIR)player/
 RAY_DIR	:= $(TUL_DIR)ray/
+IMG_DIR	:= $(TUL_DIR)cub_images/
 
 OBJ_DIR	:= .objs/
 DEP_DIR	:= .deps/
@@ -55,7 +56,7 @@ MLX_DIR	= minilibx/
 UNAME	= $(shell uname -s)
 
 CFLAGS		= -Wall -Wextra -Werror -W
-# XFLAGS		= -fsanitize=address -g
+XFLAGS		= #-fsanitize=address -g
 DFLAGS		= -MT $@ -MMD -MP
 
 ifeq ($(UNAME), Darwin)
@@ -83,7 +84,6 @@ INCLUDE	= -I$(INC_DIR) -I$(MLX_DIR) \
 
 CUB_SRC	= cub3d.c \
 		cub3d_init_vals.c \
-		cub3d_init_imgs.c \
 		cub3d_init_player.c
 
 CUB_MAP	= cub_map.c \
@@ -109,6 +109,8 @@ CUB_RAY = ray_calc.c \
 		ray_dda.c \
 		draw.c
 
+CUB_IMG	= init_images.c
+
 CUB_UTL = cub3d_utils.c \
 		cub3d_errors.c
 
@@ -118,6 +120,7 @@ SRCS	+= $(addprefix $(PRS_DIR), $(CUB_PRS))
 SRCS	+= $(addprefix $(HUK_DIR), $(CUB_HUK))
 SRCS	+= $(addprefix $(PLY_DIR), $(CUB_PLY))
 SRCS	+= $(addprefix $(RAY_DIR), $(CUB_RAY))
+SRCS	+= $(addprefix $(IMG_DIR), $(CUB_IMG))
 SRCS	+= $(addprefix $(UTL_DIR), $(CUB_UTL))
 
 OBJS	= $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
